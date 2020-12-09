@@ -1,18 +1,12 @@
 //JS here
-$(".single-item").slick({
-    // dots: true,
-    infinite: true,
-    arrows: true,
-});
+
+
 
 document.addEventListener('DOMContentLoaded', event => {
     const buttonMenu = document.querySelector('#btn-menu')
     const nav = document.querySelector('.header__nav')
     const btnColor = document.querySelectorAll('#btn-menu div');
     const btnColorArr = Array.from(btnColor)
-    
-    const test = document.querySelector('.header + .hero + .skill')
-    console.log(test);
 
     const header = document.querySelector('.header')
     
@@ -41,6 +35,8 @@ document.addEventListener('DOMContentLoaded', event => {
     document.querySelector('.scroll-top').onclick = function(){
         $('html').animate({scrollTop: 0});
     }
+    
+
     
 })
 
