@@ -1,6 +1,11 @@
 @mixin responsive ($breakpoint) {
+  @if $breakpoint == ReallySmallMobile{
+    @media (max-width: 300px){
+      @content;
+  }
+  };
   @if $breakpoint == SmallMobile{
-      @media (max-width: 350px){
+      @media (max-width: 360px){
           @content;
       }
   }
@@ -72,6 +77,25 @@ a{
   }
   100%{
     top: 0;
+  }
+}
+
+@keyframes teamSlide {
+  0%{
+    // top: -20%;
+    opacity: 0;
+    // background-color: #fff;
+    height: 0;
+  }
+  // 50%{
+  //   opacity: 0;
+  //   background-color: #fff;
+  //   height: 0;
+  // }
+  100%{
+    top: 0;
+    opacity: 1;
+    height: 100%;
   }
 }
 
@@ -353,6 +377,11 @@ a{
           padding: 0 5px;
           border: 1px solid #ccc;
         }
+
+        @include responsive(ReallySmallMobile){
+          width: 250px;
+        }
+
         &:focus{
           display: flex;
         }
@@ -508,6 +537,10 @@ a{
     @include responsive(Mobile){
       font-size: 1.6rem;
     }
+    @include responsive(ReallySmallMobile){
+      font-size: 1.4;
+      width: 70%;
+    }
   }
 
   &__btn{
@@ -526,6 +559,10 @@ a{
       @include responsive(Mobile){
         font-size: 1.6rem;
         padding: 10px 10px;
+      }
+
+      @include responsive(ReallySmallMobile){
+        font-size: 1.2rem;
       }
       // @include responsive(SmallMobile){
       //   font-size: 1.6rem;
@@ -550,7 +587,10 @@ a{
       @include responsive(Mobile){
         font-size: 1.6rem;
         padding: 10px 8px;
+      }
 
+      @include responsive(ReallySmallMobile){
+        font-size: 1.2rem;
       }
       
       &:hover{
@@ -577,6 +617,10 @@ a{
     color: #666;
     text-align: center;
     font-size: 2.4rem;
+
+    @include responsive(ReallySmallMobile){
+      font-size: 2rem;
+    }
     
     & span{
       display: inline-block;
@@ -649,7 +693,8 @@ a{
     display: flex;
 
     @include responsive(SmallPC){
-      align-items: flex-end;
+      // align-items: flex-end;
+      align-items: center;
     }
     // @include responsive(SmallMobile){
     //   align-items: center;
@@ -687,6 +732,10 @@ a{
     font-size: 2.4rem;
     margin-bottom: 40px;
 
+    @include responsive(ReallySmallMobile){
+      font-size: 2rem;
+    }
+
     & span{
       position: relative;
     
@@ -710,6 +759,7 @@ a{
 
   &__vid{
     width: 100%;
+
     & img{
       @include responsive(Tablet){
         width: 700px;
@@ -720,10 +770,37 @@ a{
       @include responsive(SmallMobile){
         width: 280px;
       }
+
+      @include responsive(ReallySmallMobile){
+        width: 250px;
+      }
     }
 
     &--second{
       margin-top: 25px;
+      width: 600px;
+      height: 350px;
+      display: flex;
+      justify-content: center;
+
+      @include responsive(Mobile){
+        width: 330px;
+        height: 300px;
+      }
+
+      @include responsive(SmallMobile){
+        width: 280px;
+        height: 250px;
+      }
+
+      @include responsive(ReallySmallMobile){
+        width: 250px;
+        height: 150px;
+      }
+      // @include responsive(Tablet){
+      //   width: 300px;
+      //   height: 200px;
+      // }
     }
   }
 
@@ -738,6 +815,11 @@ a{
       margin-right: 15px;
       transition: all .3s linear;
 
+      @include responsive(ReallySmallMobile){
+        padding: 10px 12px;
+        font-size: 1.2rem;
+      }
+
       &:hover{
         background-color: #fff;
         color: #000;
@@ -751,6 +833,11 @@ a{
       background-color: #66cc33;
       transition: all .3s linear;
       
+      @include responsive(ReallySmallMobile){
+        padding: 10px 12px;
+        font-size: 1.2rem;
+      }
+
       &:hover{
         background-color: #fff;
         color: #000;
@@ -816,11 +903,17 @@ a{
   }
 
   &__box{
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 
+
+    &:hover &-img{
+      filter: brightness(50%);
+    }
     @include responsive(MobileTablet){
       margin: 0 auto;
       text-align: center;
@@ -829,12 +922,18 @@ a{
 
     &-img{
       object-fit: cover;
+      will-change: transform;
+      transition: all .3s linear;
       @include  responsive(SmallMobile){
         width: 300px;
       }
       
       @include responsive(Mobile){
         width: 320px;
+      }
+
+      @include responsive(ReallySmallMobile){
+        width: 250px;
       }
     }
     
@@ -1142,6 +1241,7 @@ a{
 .team{
   padding-top: 65px;
   padding-bottom: 70px;
+  cursor: pointer;
 
   @include responsive(SmallMobile){
     padding-bottom: 0;
@@ -1204,14 +1304,15 @@ a{
   &__overlay{
     cursor: pointer;
     position: absolute;
-    top: 0;
+    // top: 0;
     left: 0;
-    bottom: 0;
-    right: 0;
+    width: 100%;
+    // height: 100%;
     background-color: rgba(0, 0, 0, .6);
     display: flex;
     justify-content: center;
     align-items: center;
+    animation: teamSlide .4s linear;
     display: none;
 
     &-link{
@@ -1263,6 +1364,8 @@ a{
     
     &:hover .team__overlay{
       display: flex;
+      height: 100%;
+      transition: all .3s linear;
     }
 
     &:hover &-flash{
@@ -1356,6 +1459,11 @@ a{
     font-size: 1.4rem;
     transition: all .3s linear;
     color: #333;
+
+    @include responsive(ReallySmallMobile){
+      padding: 10px 12px;
+      font-size: 1.2rem;
+    }
 
     &:hover{
       background-color: #fff;
@@ -1585,6 +1693,10 @@ a{
     &-right{
       font-size: 1.6rem;
       color: #666;
+
+      @include responsive(ReallySmallMobile){
+        text-align: center;
+      }
 
       & i{
         padding: 5px 10px;
