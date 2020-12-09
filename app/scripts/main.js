@@ -23,6 +23,12 @@ document.addEventListener('DOMContentLoaded', event => {
         else{
             header.classList.remove("sticky");
         }
+
+        if(this.scrollY > 850){
+            document.querySelector('.scroll-top').classList.add("show");
+        }else{
+            document.querySelector('.scroll-top').classList.remove("show");
+        }
     })
 
     buttonMenu.onclick = function(){
@@ -32,6 +38,9 @@ document.addEventListener('DOMContentLoaded', event => {
         bodyCannotScroll.classList.toggle('cannotScroll')
     }
     
+    document.querySelector('.scroll-top').onclick = function(){
+        $('html').animate({scrollTop: 0});
+    }
     
 })
 
