@@ -95,7 +95,8 @@ a{
   100%{
     top: 0;
     opacity: 1;
-    height: 100%;
+    // height: 100%;
+    // bottom: 100%;
   }
 }
 
@@ -605,6 +606,7 @@ a{
 //skill
 .skill{
   padding-top: 75px;
+  margin-bottom: 60px;
 
   &__container{
     @include responsive(Mobile){
@@ -681,7 +683,7 @@ a{
 
 // purchase
 .purchase{
-  margin-top: 60px;
+  // margin-top: 60px;
   background-color: rgba(0, 0, 0, .1);
   padding: 60px 0;
   
@@ -897,7 +899,7 @@ a{
       grid-template-columns: repeat(2, 1fr);
     }
 
-    @include responsive(Mobile){
+    @include responsive(MobileTablet){
       grid-template-columns: 1fr;
     }
   }
@@ -906,7 +908,7 @@ a{
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     overflow: hidden;
 
@@ -914,6 +916,11 @@ a{
     &:hover &-img{
       filter: brightness(50%);
     }
+    @include responsive(SmallPC){
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
     @include responsive(MobileTablet){
       margin: 0 auto;
       text-align: center;
@@ -922,6 +929,7 @@ a{
 
     &-img{
       object-fit: cover;
+      
       will-change: transform;
       transition: all .3s linear;
       @include  responsive(SmallMobile){
@@ -939,19 +947,32 @@ a{
     
     &-title{
       font-size: 1.5rem;
+      margin-bottom: 0;
       text-transform: uppercase;
+      text-align: left;
+      width: 100%;
+
+      @include responsive(SmallPC){
+        text-align: center;
+      }
 
       @include responsive(MobileTablet){
         margin-bottom: 5px;
+        text-align: center;
       }
     }
 
     &-content{
-      text-align: center;
+      text-align: left;
       font-size: 1.4rem;
       line-height: 2rem;
       margin-bottom: 20px;
       width: 90%;
+
+      @include responsive(SmallPC){
+        // width: 85%;
+        text-align: center;
+      }
 
       @include responsive(MobileTablet){
         width: 80%;
@@ -1087,6 +1108,16 @@ a{
     }
   }
 
+  &__right &__box{
+    // background: #000;
+    &:nth-child(odd) .why__box-icon{
+      background-color: #333;
+    }
+    &:nth-child(even) .why__box-icon{
+      background-color: #66cc33;
+    }
+  }
+  
   &__box{
     display: flex;
     justify-content: space-around;
@@ -1160,6 +1191,7 @@ a{
   }
 
   &-item{
+    background-size: cover;
     min-height: 275px;
     position: relative;
 
@@ -1304,8 +1336,8 @@ a{
   &__overlay{
     cursor: pointer;
     position: absolute;
-    // top: 0;
-    left: 0;
+    top: 0;
+    // left: 0;
     width: 100%;
     // height: 100%;
     background-color: rgba(0, 0, 0, .6);
