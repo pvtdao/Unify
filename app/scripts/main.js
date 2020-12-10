@@ -28,9 +28,7 @@ const runAnimations = () => {
 	countupEls.forEach( animateCountUp );
 };
 
-// $('.about').waypoint(function() {
-//     runAnimations()
-// });
+
 $('.why').waypoint(function() {
     runAnimations()
 });
