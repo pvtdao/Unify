@@ -60,8 +60,6 @@
                   <a href="" class="header__sub-link">login</a>
               </span>
 
-                
-
               </div>
               <div class="header__main">
                 <div id="btn-menu">
@@ -172,7 +170,7 @@
           <div class="hero__container">
             <div class="swiper-container">
               <div class="swiper-wrapper">
-                <div class="swiper-slide" style='background-image:url("/images/overlay.png"), url("/images/bg.png");'>
+                <div class="swiper-slide" style='background-image:url("/images/overlay.png"), url("./images/bg.png");'>
                   <h2 class="hero__title">welcome to unify</h2>
                   <p class="hero__text">Unify is creative technology company providing key digital services on web and mobile.</p>
                   <p class="hero__text">We minimize the gap between technology and its audience.</p>
@@ -703,6 +701,9 @@ the Internet tend to repeat predefined chunks as necessary, making this the firs
       var mySwiper = new Swiper('.swiper-container', {
         // Optional parameters
         loop: true,
+        autoplay: {
+          delay: 5000,
+        },
 
         // If we need pagination
         pagination: {
