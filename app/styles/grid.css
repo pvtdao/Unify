@@ -1199,7 +1199,7 @@ a {
         text-decoration: underline; }
 
 .info {
-  background-image: url("/images/info-bg.png");
+  background-image: url("./images/info-bg.png");
   color: #fff;
   background-size: cover;
   padding-bottom: 70px; }
